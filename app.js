@@ -15,7 +15,6 @@ var app=v();
 app.use(flash());
 app.use(bodyparser.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGOURI,{useNewUrlParser:true});
-// mongoose.connect("mongodb+srv://abhay_gt03:gautams1303@cluster0-q5c2n.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
 
 
 
