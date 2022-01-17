@@ -1,4 +1,6 @@
 var v=require("express");
+var dotenv = require("dotenv")
+dotenv.config()
 var bodyparser=require("body-parser");
 var mongoose=require("mongoose");
 var passport=require("passport");
@@ -12,7 +14,7 @@ var flash=require("connect-flash");
 var app=v();
 app.use(flash());
 app.use(bodyparser.urlencoded({ extended: true }));
-mongoose.connect("mongodb://localhost/yelpcamp",{useNewUrlParser:true});
+mongoose.connect(process.env.MONGOURI,{useNewUrlParser:true});
 // mongoose.connect("mongodb+srv://abhay_gt03:gautams1303@cluster0-q5c2n.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
 
 
@@ -356,5 +358,5 @@ function isLoggedIn(req, res, next){
 }
 
 app.listen(process.env.PORT || 5000,function(){
-	console.log("The YelpCamp Server has started!!");
+	console.log(`The YelpCamp Server has started at port ${process.env.PORT || 5000}`);
 });
